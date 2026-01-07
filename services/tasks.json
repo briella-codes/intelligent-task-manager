@@ -1,0 +1,181 @@
+{
+  "last_id": 42,
+  "tasks": [
+    {
+      "id": 10,
+      "title": "Estudiar para el examen de programacion",
+      "priority": 1,
+      "status": "in Progress",
+      "description": "Temas a  estudiar: TADS, ALGORITMOS, \u00e1rboles, grafos, Dijsktra, Prim...",
+      "due_date": "2026-02-12"
+    },
+    {
+      "id": 11,
+      "title": "supermercado",
+      "priority": 2,
+      "status": "Pending",
+      "description": "comprar queso, aceite, espinaca, cafe",
+      "due_date": null
+    },
+    {
+      "id": 14,
+      "title": "turno dentista",
+      "priority": 1,
+      "status": "Paused",
+      "description": "esperar para nuevo turno, esta de vacaciones",
+      "due_date": "2026-01-08"
+    },
+    {
+      "id": 19,
+      "title": "Llamar a Donald Trump",
+      "priority": 1,
+      "status": "Paused",
+      "description": "para jugantada de pocker",
+      "due_date": "2026-03-06"
+    },
+    {
+      "id": 20,
+      "title": "Turno dentista",
+      "priority": 3,
+      "status": "Done",
+      "description": null,
+      "due_date": "2026-01-02"
+    },
+    {
+      "id": 22,
+      "title": "Cena con amigos",
+      "priority": 2,
+      "status": "Pending",
+      "description": null,
+      "due_date": "2026-01-16"
+    },
+    {
+      "id": 23,
+      "title": "recital AC/DC",
+      "priority": 2,
+      "status": "Done",
+      "description": null,
+      "due_date": "2025-11-06"
+    },
+    {
+      "id": 27,
+      "title": "Vender la bicicleta",
+      "priority": 3,
+      "status": "Pending",
+      "description": null,
+      "due_date": "2026-01-24"
+    },
+    {
+      "id": 29,
+      "title": "Lavar la ropa",
+      "priority": 2,
+      "status": "in Progress",
+      "description": null,
+      "due_date": null
+    },
+    {
+      "id": 30,
+      "title": "Meet con Elon Musk",
+      "priority": 1,
+      "status": "Pending",
+      "description": "Ponernos al dia y pedirle consejo financiero",
+      "due_date": "2026-01-08"
+    },
+    {
+      "id": 31,
+      "title": "Ir a votar",
+      "priority": 1,
+      "status": "Done",
+      "description": null,
+      "due_date": "2025-10-26"
+    },
+    {
+      "id": 32,
+      "title": "comprar huevos",
+      "priority": 1,
+      "status": "Pending",
+      "description": "para hacer panquequitos",
+      "due_date": "2026-01-06"
+    },
+    {
+      "id": 33,
+      "title": "Pasear a Loope",
+      "priority": 1,
+      "status": "Done",
+      "description": null,
+      "due_date": "2026-01-06"
+    },
+    {
+      "id": 34,
+      "title": "Desayunar con mi amiga",
+      "priority": 1,
+      "status": "Canceled",
+      "description": null,
+      "due_date": "2025-10-02"
+    },
+    {
+      "id": 35,
+      "title": "Curso de Linux Server",
+      "priority": 1,
+      "status": "in Progress",
+      "description": null,
+      "due_date": "2026-06-12"
+    },
+    {
+      "id": 36,
+      "title": "Campamento en la isla y remada",
+      "priority": 3,
+      "status": "Pending",
+      "description": "postergada por clima, se va a reprogramar nueva fecha",
+      "due_date": "2026-01-07"
+    },
+    {
+      "id": 37,
+      "title": "Programar: proyecto Intelligent Task Manager",
+      "priority": 2,
+      "status": "in Progress",
+      "description": "Hacerle actualizaciones en el codigo de las mejoras planeadas",
+      "due_date": "2026-02-22"
+    },
+    {
+      "id": 38,
+      "title": "Ir al gimnasio",
+      "priority": 2,
+      "status": "Pending",
+      "description": "todos los dias!",
+      "due_date": null
+    },
+    {
+      "id": 39,
+      "title": "Retirar fotocopias de la facu",
+      "priority": 1,
+      "status": "Paused",
+      "description": null,
+      "due_date": "2025-12-22"
+    },
+    {
+      "id": 40,
+      "title": "curso de  Scrum",
+      "priority": 1,
+      "status": "Pending",
+      "description": null,
+      "due_date": "2025-11-05"
+    },
+    {
+      "id": 41,
+      "title": "Estudiar ingles",
+      "priority": 2,
+      "status": "Pending",
+      "description": null,
+      "due_date": "2026-01-22"
+    },
+    {
+      "id": 42,
+      "title": "comprar facturas",
+      "priority": 3,
+      "status": "Canceled",
+      "description": "cancelado... hoy sale dieta",
+      "due_date": "2026-01-07"
+    }
+  ]
+}

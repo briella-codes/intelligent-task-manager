@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <title>TASK MANAGER</title>
+    </head>
+
+    <body>
+
+        <table class="new-task">
+            <tr>
+                
+                <td>
+                    <form action="/tasks/" method="post" style="display:inline">
+                        <span>&nbsp&nbspADD NEW TASK :&nbsp</span>
+                        <input class="input-title" type="text" name="title" placeholder="name of the new task" required>
+                        <span>&nbsp&nbsp Priority:</span>
+                        <select class="select-prior" name="priority" required>
+                                <option value="1" selected>1 - High</option>
+                                <option value="2">2 - Medium</option>
+                                <option value="3">3 - Low</option>
+                        </select>
+                        
+                        <input class="input-descr" type="text" name="description" placeholder="notes and observations for the new task">
+                        <span>&nbsp&nbspDue Date:</span>
+                        <input class="input-date" min="{{ today }}"  type="date" name="due_date">
+                        <button class="classic-btn" type="submit">Create</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div class="div-header">
+            <div class="div-title">Filter / Order by : </div>
+            <div class="menu-order"><span class="filter-links"><a href="/?filter=overdue">► Overdue Tasks</a>   |  <a href="/?filter=pending">► Pending Tasks</a>  |  <a href="/?filter=byPriority">► Tasks ordered By Priority</a>  |  <a href="/?filter=all">► Tasks ordered By DueDate</a>  |  <a href="/?filter=done">► All Tasks Done</a></span></div>
+        </div>
+
+        
+
+        <table class="tasks-table">
+            <colgroup> 
+<!--            <col style="width:1%"> -->
+                <col style="width:16%">
+                <col style="width:5%">
+                <col style="width:4%">
+                <col style="width:5%">
+                <col style="width:8%">
+                <col style="width:3%">
+                <col style="width:12%">
+                <col style="width:6%">
+            </colgroup>
+            <thead>
+                
+                <tr class="cols-names">
+<!--                <th class="h-col-id">Id.</th>  -->
+                    <th class="h-col-task"><div class="note-priority"> (*) Priority:<br> 1 Hight&nbsp&nbsp-&nbsp&nbsp2 Medium&nbsp&nbsp-&nbsp&nbsp3 Low</div><div class="todo">To-do List : </div></th>
+                    <th class="h-col-status">Status</th>
+                    <th>Priority<br>(*)</th>
+                    <th>Due Date</th>
+                    <th class="h-col-actions">Task Actions:</th>
+                    <th class="h-col-edit">Edit</th>
+                    <th class="h-col-description">Description</th>
+                    <th class="h-col-delete">
+                        <form id="form-delete" method="post" action="/tasks/delete-selected">
+                            <button class="classic-btn" type="submit">Delete</button>
+                        </form>
+                    </th>
+                </tr>
+
+            </thead>
+            <tbody>
+                {% if tasks %}
+
+                    {% for task in tasks %}
+                        <tr>
+ <!--                       <td class="col-id">{{task.id}}</td> -->
+                            <td class="col-title"><strong>{{task.title}}</strong></td>
+                            <td class="col-status"><form method="post" action="/tasks/{{task.id}}/status" style="display:inline">
+                                    <select name="status" class="status-{{ task.status | lower | replace(' ', '-') }}" onchange="this.form.submit()">
+                                        {% for s in TaskStatus %}
+                                            <option value="{{ s.value }}"
+                                                {% if s.value == task.status %}selected{% endif %} >
+                                                {{ s.value }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </form>
+                            </td>
+                            <td class="col-priority">{{task.priority}}</td>
+                            <td class="col-due-date">
+                                {% if task.due_date %}
+                                    <input class="imp-due-date" type="date" value="{{ task.due_date.isoformat() }}" disabled>   
+                                {% else %}
+                                    <span>None</span>
+                                {% endif %}
+                            </td>
+                            
+                            <td class="col-actions">
+                                
+                                <div class="actions" style="display:inline">
+                                    {% for action in allowed_actions[task.status_enum] %}
+                                        {% if action == "start" %}
+
+                                            <form method="post" action="/tasks/{{task.id}}/status" style="display:inline">
+                                                <input type="hidden" name="status" value="in Progress">
+                                                <button title="Start Task" class="btn_start" type="submit"><img src="/static/icons/start.png" alt="start"></button>
+                                            </form>
+                                        
+                                        {% elif action == "pause" %}
+                                            <form method="post" action="/tasks/{{task.id}}/status" style="display:inline">
+                                                <input type="hidden" name="status" value="Paused">
+                                                <button title="Pause Task" class="btn_pause" type="submit"><img src="/static/icons/pause.png" alt="pause"></button>
+                                            </form>
+
+                                        {% elif action == "done" %}
+                                            <form method="post" action="/tasks/{{task.id}}/status" style="display:inline">
+                                                <input type="hidden" name="status" value="Done">
+                                                <button title="Task Done" class="btn_done" type="submit"><img src="/static/icons/done.png" alt="done"></button>
+                                            </form>
+                                        {% elif action == "cancel" %}
+                                            <form method="post" action="/tasks/{{task.id}}/status" style="display:inline">
+                                                <input type="hidden" name="status" value="Canceled">
+                                                <button title="Cancel Task" class="btn_cancel" type="submit"><img src="/static/icons/cancel.png" alt="cancel"></button>
+                                            </form>
+                                        {% elif action == "resume" %}
+                                            <form method="post" action="/tasks/{{task.id}}/status" style="display:inline">
+                                                <input type="hidden" name="status" value="in Progress">
+                                                <button title="Resume Task" class="btn_start" type="submit"><img src="/static/icons/start.png" alt="resume"></button>
+                                            </form>
+                                        {% elif action == "undo" %}
+                                            <form method="post" action="/tasks/{{task.id}}/status" style="display:inline">
+                                                <input type="hidden" name="status" value="Pending">
+                                                <button title="Undo Cancel, Restore Task"  class="btn_cancel" type="submit"><img src="/static/icons/undo.png" alt="undo cancel"></button>
+                                            </form>
+                                               
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                            </td>
+                            <td class="col-edit">
+                                <a class="link-edit" href="/tasks/{{ task.id }}/edit">
+                                    <img src="/static/icons/edit.png" alt="edit">
+                                </a>
+                            </td>
+                            <td class="col-description">{{task.description if task.description else ""}}</td>
+
+                            <td class="col-delete">
+                                <input type="checkbox" name="task_ids" value="{{ task.id }}" form="form-delete">
+                            </td>
+                        </tr>                   
+                    {% endfor %}
+                
+                {% else %}
+                    <tr>No tasks yet</tr>         
+                {% endif %}
+            </tbody>
+        </table>
+        <br>
+
+    </body>
+</html>

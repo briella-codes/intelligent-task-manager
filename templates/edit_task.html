@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/css/styles.css">
+        <title>TASK EDIT</title>
+    </head>
+
+    <body>
+        <h1>Task Edit</h1>
+        <form class="form-task-edit" method="post" action="/tasks/{{ task.id }}/edit">
+            <input type="hidden" name="return_to" value="{{ previous_url }}">
+
+            <input name = "title" value="{{ task.title }}"><br>
+
+
+            <span>Priority: </span><select class="select-prior" name="priority" required>
+                <option value="1" {% if task.priority == 1  %}selected{% endif %} >1 - High</option>
+                <option value="2" {% if task.priority == 2 %}selected{% endif %} >2 - Medium</option>
+                <option value="3" {% if task.priority == 3 %}selected{% endif %} >3 - Low</option>
+            </select>
+
+            
+            <br>
+            <span>Description:</span><br>
+            <textarea name = "description">{{ task.description or "" }}</textarea><br>
+            <span>Due Date:</span><br>
+            <input class="input-date-edit" type="date" name="due_date" value="{{ task.due_date.isoformat() if task.due_date else '' }}"><br>
+            <span>Status:</span><br>
+            <select name="status">
+
+                {% for s in TaskStatus %}
+                    <option value="{{ s.value }}"
+                        {% if s.value == task.status %}selected{% endif %}>
+                        {{ s.value }}
+                    </option>
+                {% endfor %}
+            </select><br>
+            <br><br>
+            <button class="classic-btn" type="submit">Save changes</button>
+            <!--<button class="classic-btn" type="button" onclick="window.location.href='/'">Cancel</button> --->
+            <a class="classic-btn" href="{{ previous_url }}">Cancel</a>
+        </form>
+    </body>
+</html>
