@@ -1,5 +1,5 @@
 # INTELLIGENT TASK MANAGER server-rendered FastAPI app (Work IN PROGRESS: this project is still being developed and improved)
-Run the app directly using this [https://intelligent-task-manager-vodt.onrender.com/](https://intelligent-task-manager-7hrh.onrender.com), or clone the repo and follow the installation steps [here](#INSTALLATION-AND-EXECUTION)
+Run the app directly using this [https://intelligent-task-manager-7hrh.onrender.com](https://intelligent-task-manager-7hrh.onrender.com), or clone the repo and follow the installation steps [here](#INSTALLATION-AND-EXECUTION)
 <sub> - para Español ir al final del README.md - </sub><br><br>
 I chose to develop a task manager because **I enjoy working in an organized, structured, and efficient way**, both in a professional environment and in everyday life.
 This project reflects that mindset: **prioritizing tasks, maintaining clarity, and continuously improving processes**.
@@ -39,7 +39,7 @@ uvicorn main:app --reload
 [http://localhost:8000/](http://localhost:8000/)
 
 # INTELLIGENT TASK MANAGER -ADMINISTRADOR DE TAREAS INTELIGENTE (Trabajo EN PROCESO: este proyecto todavía está siendo desarrollado y mejorado)
-Corre la app directamente usando este [https://intelligent-task-manager-vodt.onrender.com/](https://intelligent-task-manager-7hrh.onrender.com), o clona el repo y sigue los pasos de instalación [aqui](#INSTALACIÓN-Y-EJECUCIÓN)
+Corre la app directamente usando este [https://intelligent-task-manager-7hrh.onrender.com](https://intelligent-task-manager-7hrh.onrender.com), o clona el repo y sigue los pasos de instalación [aqui](#INSTALACIÓN-Y-EJECUCIÓN)
 Elegí desarrollar un task manager porque disfruto **trabajar de forma ordenada, estructurada y eficiente**, tanto en el ámbito profesional como en el día a día.
 Este proyecto refleja esa forma de pensar: **priorizar tareas, mantener claridad y mejorar continuamente los procesos**.
 **Intelligent Task Manager** es una aplicación web desarrollada en **Python** como proyecto personal, enfocada en la **gestión de tareas con prioridad y fechas límite**. Inicialmente pensada como una herramienta simple pero estructurada para organizar tareas de manera clara y eficiente.
